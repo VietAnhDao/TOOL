@@ -1,6 +1,6 @@
 #include "VirtualScanner.h"
-
+#include <iostream>
 int main(){
-    VirtualScanner scanner(1,1,1);
+    std::cout << "hello world";
     return 0;
 }

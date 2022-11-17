@@ -1,5 +1,6 @@
 #include <iostream>
 #include "VirtualScanner.h"
+#include "Vector3D.h"
 using namespace std;
 
 VirtualScanner::VirtualScanner(int num_crystal_axial, int num_crystal_transaxial, int num_crystal_radial)
@@ -14,5 +15,5 @@ VirtualScanner::~VirtualScanner()
 }
 
 void VirtualScanner::GenerateCrystalMap(){
-
+    
 }
