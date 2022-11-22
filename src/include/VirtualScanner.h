@@ -1,4 +1,5 @@
 #include <unordered_map>
+#include <armadillo>
 #ifndef VirtualScanner_H
 #define VirtualScanner_H
 class VirtualScanner
