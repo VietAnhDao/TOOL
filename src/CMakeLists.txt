@@ -32,6 +32,7 @@ foreach(SOURCE_PATH ${SOURCE_FILES})
   # link all the library in the include to executable
   target_link_libraries(${EXECUTABLE_NAME}
     PUBLIC
+      # INTERNAL LIB
       include
       # EXTERNAL LIB
       #${lapackblas_libraries}

@@ -9,6 +9,7 @@ target_sources(include
   PUBLIC
   #${CMAKE_CURRENT_LIST_DIR}/Vector3D.h
   ${CMAKE_CURRENT_LIST_DIR}/VirtualScanner.h
+  ${CMAKE_CURRENT_LIST_DIR}/extend_armadillo.h
   #${CMAKE_CURRENT_LIST_DIR}/Matrix2D.h
 )
 
