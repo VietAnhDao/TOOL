@@ -7,11 +7,13 @@
 
 
 # ======================== FINDING PACKAGE =============================
-#FIND_PACKAGE(Boost)
+FIND_PACKAGE(Boost REQUIRED)
+FIND_PACKAGE(sipm REQUIRED)
 #find_package(BLAS)
 #find_package(LAPACK)
 find_package(Armadillo REQUIRED)
 include_directories(${ARMADILLO_INCLUDE_DIRS})
+include_directories(${Boost_INCLUDE_DIRS})
 # ======================== FIND & COMPILE ALL EXECUTABLE ===============
 # get all executable from source folder
 file(GLOB SOURCE_FILES source/*.c source/*.cpp source/*.cxx)
@@ -37,6 +39,7 @@ foreach(SOURCE_PATH ${SOURCE_FILES})
       # EXTERNAL LIB
       #${lapackblas_libraries}
       ${ARMADILLO_LIBRARIES}
+      ${BOOST_LIBRARIES}
     )
   install(TARGETS ${EXECUTABLE_NAME})
 endforeach(SOURCE_PATH ${SOURCE_FILES})

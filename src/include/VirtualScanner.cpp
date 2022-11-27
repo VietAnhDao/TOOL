@@ -1,6 +1,8 @@
 #include <iostream>
+#include <armadillo>
 #include "VirtualScanner.h"
 #include "extend_armadillo.h"
+#include "extend_boost.h"
 using namespace std;
 VirtualScanner::VirtualScanner(int num_crystal_axial_per_bucket, 
                              int num_crystal_transaxial_per_bucket,
