@@ -11,7 +11,7 @@
 #find_package(LAPACK)
 FIND_PACKAGE(Boost REQUIRED)
 FIND_PACKAGE(Armadillo REQUIRED)
-FIND_PACKAGE(sipm REQUIRED)
+find_package(sipm REQUIRED PATHS ${CMAKE_SOURCE_DIR}/external)
 # DEBUG 
 message(STATUS "Armadillo: found=${ARMADILLO_FOUND}, include_dirs=${ARMADILLO_INCLUDE_DIRS}, lib=${ARMADILLO_LIBRARIES}, version=${ARMADILLO_VERSION}")
 message(STATUS "Boost: found=${Boost_FOUND}, include_dirs=${Boost_INCLUDE_DIRS}, lib=${Boost_LIBRARY}, version=${Boost_VERSION}")
