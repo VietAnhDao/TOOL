@@ -7,13 +7,20 @@
 
 
 # ======================== FINDING PACKAGE =============================
-FIND_PACKAGE(Boost REQUIRED)
-FIND_PACKAGE(sipm REQUIRED)
 #find_package(BLAS)
 #find_package(LAPACK)
-find_package(Armadillo REQUIRED)
+FIND_PACKAGE(Boost REQUIRED)
+FIND_PACKAGE(Armadillo REQUIRED)
+FIND_PACKAGE(sipm REQUIRED)
+# DEBUG 
+message(STATUS "Armadillo: found=${ARMADILLO_FOUND}, include_dirs=${ARMADILLO_INCLUDE_DIRS}, lib=${ARMADILLO_LIBRARIES}, version=${ARMADILLO_VERSION}")
+message(STATUS "Boost: found=${Boost_FOUND}, include_dirs=${Boost_INCLUDE_DIRS}, lib=${Boost_LIBRARY}, version=${Boost_VERSION}")
+message(STATUS "sipm: found=${sipm_FOUND}, include_dirs=${sipm_INCLUDE_DIRS}, lib=${sipm_LIBRARY}, version=${sipm_VERSION}")
+# ======================== ADD INCLUDE DIR =============================
 include_directories(${ARMADILLO_INCLUDE_DIRS})
 include_directories(${Boost_INCLUDE_DIRS})
+include_directories(${CMAKE_INCLUDE_DIRS})
+include_directories(${CMAKE_SOURCE_DIR}/external/include/sipm)
 # ======================== FIND & COMPILE ALL EXECUTABLE ===============
 # get all executable from source folder
 file(GLOB SOURCE_FILES source/*.c source/*.cpp source/*.cxx)

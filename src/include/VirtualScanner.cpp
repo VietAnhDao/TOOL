@@ -25,5 +25,4 @@ VirtualScanner::~VirtualScanner()
 
 void VirtualScanner::GenerateCrystalMap()
 {
-    arma::mat rot = arma::rot(0.0, 0.0, 0.0);
 }

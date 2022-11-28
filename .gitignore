@@ -1,3 +1,6 @@
 build
 INSTALL
+external/include
+external/lib
+external/share
 .vscode
