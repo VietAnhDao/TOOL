@@ -1,26 +1,21 @@
-#add_executable(${PROJECT_NAME} PrintCrystalMap.cpp)
-#add_subdirectory(include)
-#target_link_libraries(${PROJECT_NAME}
-#  PRIVATE
-#    include
-#  )
-
-
 # ======================== FINDING PACKAGE =============================
-#find_package(BLAS)
-#find_package(LAPACK)
 FIND_PACKAGE(Boost REQUIRED)
-FIND_PACKAGE(Armadillo REQUIRED)
-find_package(sipm REQUIRED PATHS ${CMAKE_SOURCE_DIR}/external)
+FIND_PACKAGE(Armadillo REQUIRED) # used for linear algebra
+FIND_PACKAGE(sipm REQUIRED PATHS ${CMAKE_SOURCE_DIR}/external)
+FIND_PACKAGE(ROOT REQUIRED)
 # DEBUG 
 message(STATUS "Armadillo: found=${ARMADILLO_FOUND}, include_dirs=${ARMADILLO_INCLUDE_DIRS}, lib=${ARMADILLO_LIBRARIES}, version=${ARMADILLO_VERSION}")
 message(STATUS "Boost: found=${Boost_FOUND}, include_dirs=${Boost_INCLUDE_DIRS}, lib=${Boost_LIBRARY}, version=${Boost_VERSION}")
 message(STATUS "sipm: found=${sipm_FOUND}, include_dirs=${sipm_INCLUDE_DIRS}, lib=${sipm_LIBRARY}, version=${sipm_VERSION}")
+message(STATUS "root: found=${ROOT_FOUND}, include_dirs=${ROOT_INCLUDE_DIRS}, lib=${ROOT_LIBRARIES}, version=${ROOT_VERSION}")
 # ======================== ADD INCLUDE DIR =============================
 include_directories(${ARMADILLO_INCLUDE_DIRS})
 include_directories(${Boost_INCLUDE_DIRS})
-include_directories(${CMAKE_INCLUDE_DIRS})
-include_directories(${CMAKE_SOURCE_DIR}/external/include/sipm)
+include_directories(${CMAKE_INCLUDE_DIRS}) # custom user defined include dir
+include_directories(${ROOT_INCLUDE_DIRS})
+
+include_directories(${CMAKE_SOURCE_DIR}/external/include/sipm) # external folder include.
+include_directories(${CMAKE_SOURCE_DIR}/external/include)
 # ======================== FIND & COMPILE ALL EXECUTABLE ===============
 # get all executable from source folder
 file(GLOB SOURCE_FILES source/*.c source/*.cpp source/*.cxx)
@@ -28,15 +23,6 @@ file(GLOB SOURCE_FILES source/*.c source/*.cpp source/*.cxx)
 foreach(SOURCE_PATH ${SOURCE_FILES})
   get_filename_component(EXECUTABLE_NAME ${SOURCE_PATH} NAME_WE)
   add_executable(${EXECUTABLE_NAME} ${SOURCE_PATH})
-  # ===================== LINK ALL EXTERNAL PACKAGE ===================
-  #IF (Boost_FOUND)
-  #  INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
-  #  ADD_DEFINITIONS( "-DHAS_BOOST" )
-  #ENDIF()
-  #if(LAPACK_FOUND AND BLAS_FOUND)
-  #  set(lapackblas_libraries "${BLAS_LIBRARIES} ${LAPACK_LIBRARIES}")
-  #endif()
-  # ====================== LINK INTERNAL PACKAGE =======================
   add_subdirectory(include)
   # link all the library in the include to executable
   target_link_libraries(${EXECUTABLE_NAME}
@@ -47,6 +33,7 @@ foreach(SOURCE_PATH ${SOURCE_FILES})
       #${lapackblas_libraries}
       ${ARMADILLO_LIBRARIES}
       ${BOOST_LIBRARIES}
+      ${ROOT_LIBRARIES}
     )
   install(TARGETS ${EXECUTABLE_NAME})
 endforeach(SOURCE_PATH ${SOURCE_FILES})
