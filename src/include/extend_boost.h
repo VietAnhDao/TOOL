@@ -26,5 +26,5 @@ namespace boost{
                     x.template get<2>()==y.template get<2>());
         }
     };
-    template <typename T> using coord_map = boost::unordered_map< coord<T>, arma::vec3, ihash<T>, iequal_to<T> >;
+    template <typename K, typename V> using coord_map = boost::unordered_map< coord<K>, coord<V>, ihash<K>, iequal_to<K> >;
 }

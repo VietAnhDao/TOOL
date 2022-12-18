@@ -1,6 +1,7 @@
 #include "VirtualScanner.h"
 using namespace std;
 typedef boost::tuple<int, int, int> det_pos;
+typedef boost::tuple<float, float, float> euclid_coord;
 VirtualScanner::VirtualScanner(int num_axial_crystal_per_block, 
                                int num_axial_block_per_bucket,
                                int num_axial_bucket,
@@ -92,7 +93,7 @@ void VirtualScanner::GenerateCrystalMap()
 	float axial_crystal_spacing = this->axial_crystal_spacing;
 	float transaxial_crystal_spacing = this->transaxial_crystal_spacing;
     float intrinsic_azimuthal_tilt = this->intrinsic_azimuthal_tilt;
-	boost::coord_map<int> cartesian_coord_map_given_detection_position_keys;
+	boost::coord_map<int, float> cartesian_coord_map_given_detection_position_keys;
 	/*Building starts from a bucket perpendicular to y axis, from its first crystal.
 		see start_x*/
 
@@ -156,6 +157,7 @@ void VirtualScanner::GenerateCrystalMap()
 
 		arma::vec3 transformed_coord = start_point + transformation_matrix;
 		arma::vec3 cart_coord = rotation_matrix*transformed_coord;
-		cartesian_coord_map_given_detection_position_keys[det] = cart_coord;
+        euclid_coord coord = boost::make_tuple(cart_coord.at(0), cart_coord.at(1), cart_coord.at(2));
+		cartesian_coord_map_given_detection_position_keys[det] = coord;
 	}
 }
