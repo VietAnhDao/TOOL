@@ -1,5 +1,4 @@
 #include "SiPM.h"
-#include "SiPMProperties.h"
 SiPM::SiPM(float module_width, float module_pitch, int det_num_per_width,int det_num_per_pitch,float det_width,float det_pitch,float dead_space)
 {
     sipm::SiPMProperties myProperties;

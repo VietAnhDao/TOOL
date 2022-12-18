@@ -1,0 +1,14 @@
+
+/gate/world/daughters/name         phantom
+/gate/world/daughters/insert       cylinder
+/gate/phantom/setMaterial          Water
+/gate/phantom/vis/setColor         blue
+/gate/phantom/vis/setVisible	   1
+#/gate/phantom/geometry/radius      1 mm
+/gate/phantom/geometry/setRmin     0.0 cm
+/gate/phantom/geometry/setRmax     20 mm
+/gate/phantom/geometry/setHeight   40 mm
+/gate/phantom/placement/setTranslation {source_x} {source_y} {source_z} mm
+
+/gate/phantom/attachPhantomSD
+

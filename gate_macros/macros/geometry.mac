@@ -1,0 +1,126 @@
+# Set up the scanner geometry
+
+# +-------------+ #
+# |  W O R L D  | #
+# +-------------+ #
+
+/gate/world/geometry/setXLength         {world_x} mm
+/gate/world/geometry/setYLength         {world_y} mm
+/gate/world/geometry/setZLength         {world_z} mm
+
+/gate/world/vis/setVisible              0
+
+
+# +---------------------------------+ #
+# |  C Y L I N D R I C A L   P E T  | #
+# +---------------------------------+ #
+
+/gate/world/daughters/name              cylindricalPET
+/gate/world/daughters/insert            cylinder
+/gate/cylindricalPET/setMaterial        Air
+/gate/cylindricalPET/geometry/setRmax   {cylinder_r_max} mm
+/gate/cylindricalPET/geometry/setRmin   {cylinder_r_min} mm
+/gate/cylindricalPET/geometry/setHeight {cylinder_height} mm
+/gate/cylindricalPET/placement/setRotationAngle -90. deg
+
+/gate/cylindricalPET/vis/forceWireframe
+/gate/cylindricalPET/vis/setLineWidth   {cylinder_lw}
+/gate/cylindricalPET/vis/setColor       {cylinder_color}
+
+
+# +-------------------+ #
+# |  R - S E C T O R  | #
+# +-------------------+ #
+#
+# Describes a radial section of the scanner - consequently its axial dimension
+# stretches along full scanner length
+
+/gate/cylindricalPET/daughters/name     rSector
+/gate/cylindricalPET/daughters/insert   box
+/gate/rSector/setMaterial               Air
+/gate/rSector/placement/setTranslation   0.0 {rSector_y_trans} 0.0 mm
+/gate/rSector/geometry/setXLength       {rSector_x} mm        
+/gate/rSector/geometry/setYLength       {rSector_y} mm     
+/gate/rSector/geometry/setZLength       {rSector_z} mm 
+
+/gate/rSector/vis/forceWireframe 
+/gate/rSector/vis/setColor              {rSector_color}
+/gate/rSector/vis/setVisible            {rSector_visibility}
+
+# Repeat rSector
+/gate/rSector/repeaters/insert          ring
+/gate/rSector/ring/setRepeatNumber      {n_sectors}
+
+
+# +-------------+ #
+# |  B L O C K  | #
+# +-------------+ #
+#
+# Describes a block of crystals, e.g. a matrix
+
+/gate/rSector/daughters/name            block
+/gate/rSector/daughters/insert          box
+/gate/cylindricalPET/setMaterial        Air
+/gate/block/geometry/setXLength         {block_x} mm        
+/gate/block/geometry/setYLength         {block_y} mm     
+/gate/block/geometry/setZLength         {block_z} mm 
+
+/gate/block/vis/forceWireframe
+/gate/block/vis/setVisible              {block_visibility}
+/gate/block/vis/setColor                {block_color}
+
+# Repeat block
+/gate/block/repeaters/insert            cubicArray
+/gate/block/cubicArray/setRepeatNumberX {n_blocks_x}
+/gate/block/cubicArray/setRepeatNumberY {n_blocks_y}
+/gate/block/cubicArray/setRepeatNumberZ {n_blocks_z}
+/gate/block/cubicArray/setRepeatVector  {block_repeat_x} {block_repeat_y} {block_repeat_z} mm
+
+
+
+# +----------------+ #
+# |  C R Y S T A L | #
+# +----------------+ #
+#
+# Describes a crystal
+
+/gate/block/daughters/name                crystal
+/gate/block/daughters/insert              box
+/gate/crystal/setMaterial                 {crystal_material}
+/gate/crystal/geometry/setXLength         {crystal_x} mm        
+/gate/crystal/geometry/setYLength         {crystal_y} mm     
+/gate/crystal/geometry/setZLength         {crystal_z} mm 
+
+/gate/crystal/vis/forceWireframe
+/gate/crystal/vis/setVisible              {crystal_visibility}
+/gate/crystal/vis/setColor                {crystal_color}
+
+# Repeat crystal
+/gate/crystal/repeaters/insert            cubicArray
+/gate/crystal/cubicArray/setRepeatNumberX {n_crystals_x}
+/gate/crystal/cubicArray/setRepeatNumberY {n_crystals_y}
+/gate/crystal/cubicArray/setRepeatNumberZ {n_crystals_z}
+/gate/crystal/cubicArray/setRepeatVector  {crystal_repeat_x} {crystal_repeat_y} {crystal_repeat_z} mm
+
+
+# L A Y E R
+#/gate/crystal/daughters/name LSO
+#/gate/crystal/daughters/insert box
+#/gate/LSO/geometry/setXLength {crystal_x} mm
+#/gate/LSO/geometry/setYLength {crystal_y} mm
+#/gate/LSO/geometry/setZLength {crystal_z} mm
+#/gate/LSO/placement/setTranslation 0 0 0 mm
+#/gate/LSO/setMaterial LSO
+
+# +-------------------+ #
+# |  F I N A L I Z E  | #
+# +-------------------+ #
+#
+# attach system
+/gate/systems/cylindricalPET/rsector/attach   rSector
+/gate/systems/cylindricalPET/module/attach    block
+/gate/systems/cylindricalPET/crystal/attach   crystal
+#/gate/systems/cylindricalPET/layer0/attach    LSO
+
+# create sensitive volume
+/gate/crystal/attachCrystalSD

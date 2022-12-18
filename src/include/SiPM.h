@@ -1,6 +1,6 @@
+#include "SiPMProperties.h"
 #ifndef SiPM_H
 #define SiPM_H
-#include "SiPMProperties.h"
 class SiPM
 {
 private:

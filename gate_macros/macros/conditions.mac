@@ -1,0 +1,59 @@
+# +-------------------------------+ #
+# |  R U N   C O N D I T I O N S  | #
+# +-------------------------------+ #
+
+# directory to run parameters
+/control/alias      run_dir            .
+
+#  LOAD PARAMETERS  #
+/control/execute        ./parameters.mac
+
+#  SOURCE  #
+/control/alias      source_x            0.0
+/control/alias      source_y            0.0
+/control/alias      source_z            0.0
+/control/alias      phantom_x           0.0
+/control/alias      phantom_y           0.0
+/control/alias      phantom_z           0.0
+/control/alias      source_x            0.0
+/control/alias      source_y            0.0
+/control/alias      source_z            0.0
+
+/control/alias      source_activity     3000000
+/control/alias      n_primaries         10000000
+
+#  PHANTOM  #
+/control/execute        ./moliner_phantom.mac
+
+#   output filename
+/control/alias      root_filename       gate_out
+/control/alias      ascii_filename      gate_out
+
+#   timing
+/control/alias      slice_time          3
+/control/alias      start_time          0.0
+/control/alias      stop_time           3
+
+# energy cut
+/control/alias      min_energy          350. keV
+/control/alias      max_energy          650. keV
+
+# coincidences
+/control/alias      coincidence_window 5 ns
+/control/alias      multiple_coincidence_policy takeWinnerOfGoods
+
+# set rng seed
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed 1649772209
+#/gate/random/setEngineSeed auto
+
+#  ReferenceDesign  #
+/control/execute    ./neurolfv01_geometry.mac
+
+/control/execute    ./setup.mac
+
+#  VISUALIZATION  #
+#/control/execute        /tmp/output.30.1649772209.25/mc/safir_gate_simulation_1_Francis_Flack/outputs/visualization.mac
+
+/gate/application/startDAQ
+exit

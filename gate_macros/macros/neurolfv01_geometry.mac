@@ -1,0 +1,33 @@
+# Written by Geometry class from Python
+# Title: neuroLF_geometry.yaml
+/control/alias n_blocks_x 4 
+/control/alias crystal_z 3.19 
+/control/alias crystal_x 3.19 
+/control/alias crystal_y 10.0 
+/control/alias cylinder_height 200.0 
+/control/alias rSector_x 106.12 # 
+/control/alias rSector_y 10.0 
+/control/alias rSector_z 159.48
+/control/alias n_crystals_y 1 
+/control/alias n_crystals_x 8 
+/control/alias n_crystals_z 8 
+/control/alias block_repeat_y 0.0 
+/control/alias block_repeat_x 26.68 
+/control/alias cylinder_r_max 200.0 
+/control/alias block_repeat_z 26.68 
+/control/alias n_sectors 8 
+/control/alias world_z 1000.0 
+/control/alias world_x 1000.0 
+/control/alias world_y 1000.0 
+/control/alias rSector_y_trans 138.0 
+/control/alias n_blocks_y 1 
+/control/alias n_blocks_z 6 
+/control/alias crystal_repeat_y 0.0 
+/control/alias crystal_repeat_x 3.27 
+/control/alias crystal_repeat_z 3.27 
+/control/alias block_y 10.0 
+/control/alias block_x 26.08 
+/control/alias cylinder_r_min 125.0 
+/control/alias block_z 26.08 
+/control/alias crystal_material LYSO 
+/control/execute   ./geometry.mac

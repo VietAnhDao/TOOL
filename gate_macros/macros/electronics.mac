@@ -1,0 +1,34 @@
+# Define the electronics response
+#
+# Adder
+/gate/digitizer/Singles/insert adder
+
+# Readout
+/gate/digitizer/Singles/insert readout
+/gate/digitizer/Singles/readout/setDepth {readout_depth}
+
+# Create SinglesEnergyCutAndBlurring
+/gate/digitizer/name SinglesEnergyCutAndBlurring 
+/gate/digitizer/insert singleChain 
+/gate/digitizer/SinglesEnergyCutAndBlurring/setInputName Singles 
+
+#   Energy blurring
+/gate/digitizer/SinglesEnergyCutAndBlurring/insert                        blurring                
+/gate/digitizer/SinglesEnergyCutAndBlurring/blurring/setResolution        {energy_resolution}
+/gate/digitizer/SinglesEnergyCutAndBlurring/blurring/setEnergyOfReference 511. keV
+
+#   Time blurring
+/gate/digitizer/SinglesEnergyCutAndBlurring/insert                        timeResolution
+/gate/digitizer/SinglesEnergyCutAndBlurring/timeResolution/setTimeResolution        {time_resolution}
+
+# Add Thresholds
+/gate/digitizer/SinglesEnergyCutAndBlurring/insert thresholder 
+/gate/digitizer/SinglesEnergyCutAndBlurring/thresholder/setThreshold {min_energy} 
+/gate/digitizer/SinglesEnergyCutAndBlurring/insert upholder 
+/gate/digitizer/SinglesEnergyCutAndBlurring/upholder/setUphold {max_energy}
+
+# Coincidences
+/gate/digitizer/Coincidences/setInputName SinglesEnergyCutAndBlurring
+/gate/digitizer/Coincidences/setWindow {coincidence_window} 
+/gate/digitizer/Coincidences/MultiplesPolicy {multiple_coincidence_policy} 
+

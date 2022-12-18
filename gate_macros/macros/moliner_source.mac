@@ -1,0 +1,72 @@
+### Define hot regions ###
+/gate/source/addSource rod_12mm
+/gate/source/rod_12mm/setActivity 786026.93 becquerel
+/gate/source/rod_12mm/gps/particle e+
+/gate/source/rod_12mm/gps/energytype Fluor18
+/gate/source/rod_12mm/setForcedUnstableFlag true
+/gate/source/rod_12mm/setForcedHalfLife 6586 s
+/gate/source/rod_12mm/gps/angtype       iso
+/gate/source/rod_12mm/gps/type Volume
+/gate/source/rod_12mm/gps/shape Cylinder
+/gate/source/rod_12mm/gps/radius 6. mm
+/gate/source/rod_12mm/gps/halfz 25. mm
+/gate/source/rod_12mm/gps/centre {rod_12mm_x} {rod_12mm_y} {rod_12mm_z} mm
+
+/gate/source/addSource rod_9mm
+/gate/source/rod_9mm/setActivity 442139.54 becquerel
+/gate/source/rod_9mm/gps/particle e+
+/gate/source/rod_9mm/gps/energytype Fluor18
+/gate/source/rod_9mm/setForcedUnstableFlag true
+/gate/source/rod_9mm/setForcedHalfLife 6586 s
+/gate/source/rod_9mm/gps/angtype       iso
+/gate/source/rod_9mm/gps/type Volume
+/gate/source/rod_9mm/gps/shape Cylinder
+/gate/source/rod_9mm/gps/radius 4.5 mm
+/gate/source/rod_9mm/gps/halfz 25. mm
+/gate/source/rod_9mm/gps/centre {rod_9mm_x} {rod_9mm_y} {rod_9mm_z} mm
+
+/gate/source/addSource rod_6mm
+/gate/source/rod_6mm/setActivity 196507.1 becquerel
+/gate/source/rod_6mm/gps/particle e+
+/gate/source/rod_6mm/gps/energytype Fluor18
+/gate/source/rod_6mm/setForcedUnstableFlag true
+/gate/source/rod_6mm/setForcedHalfLife 6586 s
+/gate/source/rod_6mm/gps/angtype       iso
+/gate/source/rod_6mm/gps/type Volume
+/gate/source/rod_6mm/gps/shape Cylinder
+/gate/source/rod_6mm/gps/radius 3. mm
+/gate/source/rod_6mm/gps/halfz 25. mm
+/gate/source/rod_6mm/gps/centre {rod_6mm_x} {rod_6mm_y} {rod_6mm_z} mm
+
+/gate/source/addSource rod_4mm
+/gate/source/rod_4mm/setActivity 110534.885 becquerel
+/gate/source/rod_4mm/gps/particle e+
+/gate/source/rod_4mm/gps/energytype Fluor18
+/gate/source/rod_4mm/setForcedUnstableFlag true
+/gate/source/rod_4mm/setForcedHalfLife 6586 s
+/gate/source/rod_4mm/gps/angtype       iso
+/gate/source/rod_4mm/gps/type Volume
+/gate/source/rod_4mm/gps/shape Cylinder
+/gate/source/rod_4mm/gps/radius 2.25 mm
+/gate/source/rod_4mm/gps/halfz 25. mm
+/gate/source/rod_4mm/gps/centre {rod_4mm_x} {rod_4mm_y} {rod_4mm_z} mm
+
+/gate/source/addSource backgr
+/gate/source/backgr/setActivity 50000000 becquerel
+/gate/source/backgr/gps/particle e+
+/gate/source/backgr/gps/energytype Fluor18
+/gate/source/backgr/setForcedUnstableFlag true
+/gate/source/backgr/setForcedHalfLife 6586 s
+/gate/source/backgr/gps/angtype       iso
+/gate/source/backgr/gps/type Volume
+/gate/source/backgr/gps/shape Cylinder
+/gate/source/backgr/gps/radius 67.5 mm
+/gate/source/backgr/gps/halfz 51.5 mm
+/gate/source/backgr/gps/centre {backgr_x} {backgr_y} {backgr_z} mm
+### Define cold regions ###
+/gate/source/backgr/gps/Forbid airrod_phys
+/gate/source/backgr/gps/Forbid waterrod_phys
+/gate/source/backgr/dump 2
+
+
+/gate/source/list

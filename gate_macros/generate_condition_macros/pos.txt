@@ -1,0 +1,11 @@
+phantom
+phantom 0 0 0 mm
+airrod -16.875 -29.23 26.5 mm
+waterrod 16.875 29.23 26.5 mm
+
+source
+rod_12mm -16.875 29.23 26.5 mm
+rod_9mm 33.75 0.0 26.5 mm
+rod_6mm -33.75 0.0 26.5 mm
+rod_4mm 16.875 -29.23 26.5 mm
+backgr 0 0 0 mm

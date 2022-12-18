@@ -1,0 +1,12 @@
+# Use Geant4 physics list builder from Gate 7.0 onwards
+# http://wiki.opengatecollaboration.org/index.php/Users_Guide_V7.2:Setting_up_the_physics
+
+#/gate/physics/addPhysicsList QGSP_BERT_EMV
+/gate/physics/addPhysicsList emstandard_opt3
+/gate/physics/addProcess RadioactiveDecay
+
+# Following cuts were suggested by Paola Solevi. For the gamma, this ensures that the xray escape lines are present in the spectrum. Otherwise, 1mm is the default for the particles.
+/gate/physics/Gamma/SetCutInRegion    crystal 0.5 mm
+/gate/physics/Electron/SetCutInRegion   crystal 1 mm
+/gate/physics/Positron/SetCutInRegion   crystal 1 mm
+/gate/physics/displayCuts

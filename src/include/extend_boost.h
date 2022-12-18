@@ -1,4 +1,5 @@
 #include <boost/unordered_map.hpp>
+#include <armadillo>
 namespace boost{
     template <typename T> using coord = boost::tuples::tuple<T, T, T>;
 
@@ -25,5 +26,5 @@ namespace boost{
                     x.template get<2>()==y.template get<2>());
         }
     };
-    template <typename T> using coord_map = boost::unordered_map< coord<T>, int, ihash<T>, iequal_to<T> >;
+    template <typename T> using coord_map = boost::unordered_map< coord<T>, arma::vec3, ihash<T>, iequal_to<T> >;
 }

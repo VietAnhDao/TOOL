@@ -1,0 +1,27 @@
+/gate/source/addSource backgr
+/gate/source/backgr/setActivity {source_activity} becquerel
+/gate/source/backgr/gps/particle e+ 
+/gate/source/backgr/gps/energytype Fluor18 
+/gate/source/backgr/setForcedUnstableFlag true 
+/gate/source/backgr/setForcedHalfLife 6586 s
+/gate/source/backgr/gps/angtype       iso 
+/gate/source/backgr/gps/type Volume
+/gate/source/backgr/gps/shape Cylinder 
+/gate/source/backgr/gps/radius 20 mm 
+/gate/source/backgr/gps/halfz 20 mm
+/gate/source/backgr/gps/centre 0 0 0 mm
+
+/gate/source/addSource rod_9mm
+/gate/source/rod_9mm/setActivity {source_activity} becquerel
+/gate/source/rod_9mm/gps/particle e+
+/gate/source/rod_9mm/gps/energytype Fluor18
+/gate/source/rod_9mm/setForcedUnstableFlag true
+/gate/source/rod_9mm/setForcedHalfLife 6586 s
+/gate/source/rod_9mm/gps/angtype       iso
+/gate/source/rod_9mm/gps/type Volume
+/gate/source/rod_9mm/gps/shape Cylinder
+/gate/source/rod_9mm/gps/radius 4.5 mm
+/gate/source/rod_9mm/gps/halfz 5. mm
+/gate/source/rod_9mm/gps/centre 10 0 5 mm
+
+/gate/source/list

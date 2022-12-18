@@ -1,0 +1,51 @@
+# Run the simulation
+
+#####   V E R B O S I T Y   #####
+#/control/verbose 1
+#/run/verbose 1
+#/event/verbose 0
+#/tracking/verbose 0
+#/gate/application/verbose 1
+#/gate/generator/verbose 1
+#/gate/source/verbose 1
+#/gate/output/verbose 1
+
+#  PHYSICS  #
+/control/execute        ./physics.mac
+
+#  INITIALIZATION  #
+#  This is necessary to actually put the defined volumes etc. in the world
+/gate/run/initialize
+# Carry out a geometry check
+#/geometry/test/run
+
+#  SOURCE  #
+/control/execute       ./moliner_source.mac
+
+#  ELECTRONICS  #
+/control/execute        ./electronics.mac
+
+#  OUTPUT  #
+# root
+/gate/output/root/enable
+/gate/output/root/setFileName             {root_filename}
+/gate/output/root/setRootHitFlag          0
+/gate/output/root/setRootSinglesFlag      1
+/gate/output/root/setRootSinglesEnergyCutAndBlurringFlag      0
+/gate/output/root/setRootCoincidencesFlag 0
+
+# ascii
+/gate/output/ascii/enable
+/gate/output/ascii/setFileName                {ascii_filename} 
+/gate/output/ascii/setOutFileHitsFlag         0
+/gate/output/ascii/setOutFileSinglesFlag      0
+/gate/output/ascii/setOutFileSinglesEnergyCutAndBlurringFlag      0
+/gate/output/ascii/setOutFileCoincidencesFlag 0
+
+#  START  #
+/gate/application/setTimeSlice   {slice_time} s
+/gate/application/setTimeStart   {start_time} s
+/gate/application/setTimeStop    {stop_time} s
+
+#/gate/application/setTotalNumberOfPrimaries {n_primaries}
+

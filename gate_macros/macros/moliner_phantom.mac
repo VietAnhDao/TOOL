@@ -1,0 +1,34 @@
+
+/gate/world/daughters/name         phantom
+/gate/world/daughters/insert       cylinder
+/gate/phantom/setMaterial          Water
+/gate/phantom/vis/setColor         blue
+/gate/phantom/vis/setVisible	   1
+/gate/phantom/geometry/setRmin     0.0 cm
+/gate/phantom/geometry/setRmax     67.5 mm
+/gate/phantom/geometry/setHeight   103. mm
+/gate/phantom/placement/setTranslation {source_x} {source_y} {source_z} mm
+
+/gate/phantom/daughters/name        airrod
+/gate/phantom/daughters/insert      cylinder
+/gate/airrod/setMaterial          Water
+/gate/airrod/vis/setColor         yellow
+/gate/airrod/vis/setVisible       1
+/gate/airrod/geometry/setRmin     0.0 cm
+/gate/airrod/geometry/setRmax     10. mm
+/gate/airrod/geometry/setHeight   50. mm
+/gate/airrod/placement/setTranslation {airrod_x} {airrod_y} {airrod_z} mm
+
+/gate/phantom/daughters/name          waterrod
+/gate/phantom/daughters/insert        cylinder
+/gate/waterrod/setMaterial          Water
+/gate/waterrod/vis/setColor         white
+/gate/waterrod/vis/setVisible       1
+/gate/waterrod/geometry/setRmin     0.0 cm
+/gate/waterrod/geometry/setRmax     7.5 mm
+/gate/waterrod/geometry/setHeight   50. mm
+/gate/waterrod/placement/setTranslation {waterrod_x} {waterrod_y} {waterrod_z} mm
+
+/gate/phantom/attachPhantomSD
+/gate/airrod/attachPhantomSD
+/gate/waterrod/attachPhantomSD
