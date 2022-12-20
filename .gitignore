@@ -3,4 +3,8 @@ INSTALL
 external/include
 external/lib
 external/share
+python/python_module/__pycache__
+python/.ipynb_checkpoints
 .vscode
+*.hs
+*.s

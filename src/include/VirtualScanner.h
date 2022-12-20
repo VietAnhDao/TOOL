@@ -28,8 +28,8 @@ private:
     float crystal_length; // mm
     float block_depth; // mm
     float intrinsic_azimuthal_tilt;
-    boost::coord_map<float> euclid_to_det;
-    boost::coord_map<int> det_to_euclid;
+    boost::coord_map<float, int> euclid_to_det;
+    boost::coord_map<int, float> det_to_euclid;
 public:
     VirtualScanner(int num_axial_crystal_per_block, 
                     int num_axial_block_per_bucket,
@@ -57,6 +57,7 @@ public:
                 );
     ~VirtualScanner();
     void GenerateCrystalMap();
+    void GenerateSiPMMap();
     arma::mat get_rotation_matrix(float alpha) const;
 };
 

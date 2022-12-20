@@ -28,3 +28,4 @@ namespace boost{
     };
     template <typename K, typename V> using coord_map = boost::unordered_map< coord<K>, coord<V>, ihash<K>, iequal_to<K> >;
 }
+

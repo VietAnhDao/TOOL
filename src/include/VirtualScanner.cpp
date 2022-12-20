@@ -160,4 +160,10 @@ void VirtualScanner::GenerateCrystalMap()
         euclid_coord coord = boost::make_tuple(cart_coord.at(0), cart_coord.at(1), cart_coord.at(2));
 		cartesian_coord_map_given_detection_position_keys[det] = coord;
 	}
+    this->det_to_euclid = cartesian_coord_map_given_detection_position_keys;
+}
+
+
+void VirtualScanner::GenerateSiPMMap(){
+    
 }

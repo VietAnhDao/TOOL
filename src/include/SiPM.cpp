@@ -20,5 +20,5 @@ SiPM::SiPM(float module_width, float module_pitch, int det_num_per_width,int det
 
 SiPM::~SiPM()
 {
-
 }
+
